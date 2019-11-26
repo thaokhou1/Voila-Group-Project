@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 
+// Route that will email criteria
 router.post('/criteria', (req, res) => {
 
     const firstName = req.body.buyer_first_name;
@@ -15,6 +16,7 @@ router.post('/criteria', (req, res) => {
     const notes = req.body.notes;
 
     let transporter = nodemailer.createTransport({
+        // Change service to whichever email service you are using
         service: 'gmail',
         auth: {
             user: process.env.EMAIL,
@@ -23,7 +25,7 @@ router.post('/criteria', (req, res) => {
     });
     
     let mailOptions = {
-        from: 'voilatest4@gmail.com',
+        // You will need to change email address 
         to: 'voilatest4@gmail.com',
         subject: `${firstName} ${lastName} has added new criteria`,
         text: `
@@ -45,6 +47,7 @@ router.post('/criteria', (req, res) => {
     });
 });
 
+// Route that will email requested showing
 router.post('/showing', (req, res) => {
 
     const firstName = req.body.buyer_first_name;
@@ -53,6 +56,7 @@ router.post('/showing', (req, res) => {
     const mlsNumber = req.body.mls_number;
 
     let transporter = nodemailer.createTransport({
+        // Change service to whichever email service you are using
         service: 'gmail',
         auth: {
             user: process.env.EMAIL,
@@ -61,7 +65,7 @@ router.post('/showing', (req, res) => {
     });
     
     let mailOptions = {
-        from: 'voilatest4@gmail.com',
+        // You will need to change email address 
         to: 'voilatest4@gmail.com',
         subject: `${firstName} ${lastName} has requested a showing`,
         text: `
@@ -80,6 +84,7 @@ router.post('/showing', (req, res) => {
     });
 });
 
+// Route that will email offer made
 router.post('/offer', (req, res) => {
 
     const firstName = req.body.buyer_first_name;
@@ -91,8 +96,8 @@ router.post('/offer', (req, res) => {
     const downPayment = req.body.down_payment;
     const sellerClosingCosts = req.body.seller_closing_costs;
 
-
     let transporter = nodemailer.createTransport({
+        // Change service to whichever email service you are using
         service: 'gmail',
         auth: {
             user: process.env.EMAIL,
@@ -101,7 +106,7 @@ router.post('/offer', (req, res) => {
     });
     
     let mailOptions = {
-        from: 'voilatest4@gmail.com',
+        // You will need to change email address 
         to: 'voilatest4@gmail.com',
         subject: `${firstName} ${lastName} has made an offer`,
         text: `

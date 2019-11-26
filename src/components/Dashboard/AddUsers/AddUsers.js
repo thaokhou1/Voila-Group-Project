@@ -35,7 +35,6 @@ class AddUsers extends Component {
   // opens the 
   handleAdd = (event) => {
   this.setState({ open: true, anchorEl: event.currentTarget });
-  console.log('handleAdd')
   };
 
   // Closes the Add Button, addClientDialog, addAdminDialog, addVendorDialog

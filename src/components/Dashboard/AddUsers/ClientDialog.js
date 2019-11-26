@@ -65,8 +65,6 @@ class ClientDialog extends Component {
     // select from a list of agents
     changeAgent = event => {
         this.setState({ agent_id: event.target.value });
-        console.log(this.state.agent_id)
-        console.log(event.target.value)
     };
 
     // switch on Buyer Journey, true or false
@@ -76,7 +74,6 @@ class ClientDialog extends Component {
 
     // POST data to create new user
     addClient = () => {
-        console.log('in addCLIENTTTTT', this.state)
         this.props.dispatch({
             type: 'REGISTER',
             payload: this.state

@@ -46,7 +46,6 @@ class AddFinal extends Component {
         this.setState({
           [propertyName]: event.target.value,
         });
-        console.log('in handleChange', this.state)
      }
 
     // submits the data to post in the database

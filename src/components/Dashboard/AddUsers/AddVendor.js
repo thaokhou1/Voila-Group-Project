@@ -54,7 +54,7 @@ class AddVendor extends Component {
     }
 
     getVendorType = () => {
-     this.props.dispatch({ type: 'GET_VENDOR_TYPE'})   
+        this.props.dispatch({ type: 'GET_VENDOR_TYPE'})   
     }
 
     // Change the states with each input made

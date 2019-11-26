@@ -72,8 +72,7 @@ class Step3Client extends Component {
                 showCriteria={this.state.showCriteria} showRequest={this.state.showRequest} showOffer={this.state.showOffer}/> : 
                 <div className="componentToShow">
                     <div className="criteria">
-                        <h1>Your Dream Home</h1>
-                        
+                        <h1>Your Dream Home</h1>    
                         {this.props.criteria.map(criteria => {
                             return <p key={criteria.id}>
                                 Bedroom Count: {''}  
@@ -106,9 +105,15 @@ class Step3Client extends Component {
                     </div>
                     <div className="step3Buttons">
                         {/* If there is no criteria added yet, button will show "Add Criteria". Otherwise, it will say "Update". */}
+<<<<<<< HEAD
                         {this.props.criteria.length === 0 ? 
                             <Button style={styles.button} onClick={this.addCriteriaToggle} color="secondary" variant="contained">Add Criteria</Button> :  
                             <Button style={styles.button} onClick={this.updateCriteriaToggle} color="secondary" variant="contained">Update Criteria</Button> 
+=======
+                        {this.props.criteria !== '' ? 
+                            <Button style={styles.button} onClick={this.updateCriteriaToggle} color="secondary" variant="contained">Update Criteria</Button> :  
+                            <Button style={styles.button} onClick={this.addCriteriaToggle} color="secondary" variant="contained">Add Criteria</Button> 
+>>>>>>> master
                             }
                             <br/>
                         <Button style={styles.button} onClick={this.requestShowingToggle} color="secondary" variant="contained">Request a showing</Button>

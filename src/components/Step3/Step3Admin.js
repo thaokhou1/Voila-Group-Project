@@ -3,96 +3,92 @@ import { connect } from 'react-redux';
 
 class Step3Admin extends Component {
 
-    state = {
-        user_step_id: this.props.userStepId
-    }
-
     componentDidMount = () => {
-        this.props.dispatch({type: 'GET_CRITERIA', payload: this.state.user_step_id});
-        this.props.dispatch({type: 'GET_SHOWING', payload: this.state.user_step_id});
-        this.props.dispatch({type: 'GET_OFFER_MADE', payload: this.state.user_step_id});
+        this.props.dispatch({type: 'GET_CRITERIA', payload: this.props.userStepId});
+        this.props.dispatch({type: 'GET_SHOWING', payload: this.props.userStepId});
+        this.props.dispatch({type: 'GET_OFFER_MADE', payload: this.props.userStepId});
     }
 
     render() {
+
+        if(this.props.showing.loading){
+            return <div>loading...</div>
+        }
+
         return (
             <div>
                 <div className="showUser">
-                    Current User: {this.props.buyerFirstName} {this.props.buyerLastName}
+                    <h1>Current User</h1> <b>{this.props.buyerFirstName} {this.props.buyerLastName}</b>
                 </div>
-
+                <br/>
                 <div className="adminCriteria">
-                    {this.props.criteria.length != 0 ? 
+                    <h1>User's Criteria</h1> 
+                    {this.props.criteria.length !== 0 ? 
                     <>
-                    User's criteria: 
-                    <br/>
                     {this.props.criteria.map(criteria => {    
                         return <div className="criteria">
                             <p key={criteria.id}>
                                 Bedroom Count: {''}  
-                                {criteria.numRooms}
+                                <b>{criteria.numRooms}</b>
                                 <br/>
                                 Bathroom Count: {''}
-                                {criteria.numBath}
+                                <b>{criteria.numBath}</b>
                                 <br/>
                                 Square Feet: {''}
-                                {criteria.numSF}
+                                <b>{criteria.numSF}</b>
                                 <br/>
                                 Location: {''}
-                                {criteria.location}
+                                <b>{criteria.location}</b>
                                 <br/>
                                 Additional Comments: {''}
-                                {criteria.notes}</p>
-                                </div>
+                                <b>{criteria.notes}</b>
+                                </p>
+                            </div>
                             })}
                         </>
                     :
                     <>
-                    User's criteria: {'User has not added any search criteria'}
+                        {`${this.props.buyerFirstName} has not added any search criteria.`}
                     </>
                 }
                 </div>
-                <div className="adminRequestShowing">
-                    {this.props.showing.values.length != 0 ? 
+                <br/>
+                <div className="adminRequestShowing"> 
                     <>
-                    Last showing requested: {this.props.showing.values.map(showing => {
-                        return <>
-                        Address: {''}
-                        {showing.address}
-                        <br/>
-                        MLS #: {''}
-                        {showing.MLS_number}
-                        <br/>
-                        {showing.date_time_created}
+                        <h1>Last Showing Requested</h1> 
+                        {this.props.showing.values.length ? 
+                        <>
+                            {this.props.showing.values[0].address}
+                            <br/>
+                            MLS #: {''}
+                            <b>{this.props.showing.values[0].MLS_number}</b>
                         </>
-                    })}
-                    </>
-                    :    
-                    <>
-                    Showings requested: {'User has not requested a showing yet'}
-                    </> 
+                        :    
+                        <>
+                            {`${this.props.buyerFirstName} has not requested a showing.`}
+                        </>
                     }
-                    
+                    </>
                 </div>
-
+                <br/>
                 <div className="adminOfferMade">
-                    {this.props.offerMade.length != 0 ?
+                    <h1>Offers Made</h1>
+                    {this.props.offerMade.length !== 0 ?
                     <>
-                    Offer Made:
                     {this.props.offerMade.map(offer => {
-                        return <>
+                        return <div key={offer.id}>
                         {offer.address}
                         {offer.price}
                         {offer.closingDate}
                         {offer.earnestMoney}
                         {offer.downPayment}
                         {offer.sellerPaidClosingCosts}
-                        {offer.date_time_created}
-                        </>
+                    </div>
                     })}
                     </>
                     :
                     <>
-                    Offers Made: {'User has not made an offer'}
+                        {`${this.props.buyerFirstName} has not made an offer yet.`}
                     </>
                 }
                 </div>

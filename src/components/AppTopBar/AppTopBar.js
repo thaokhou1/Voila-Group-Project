@@ -38,7 +38,6 @@ class AppTopBar extends Component {
   // opens the menu
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
-    console.log(this.state, 'STATE OF MENU BAR')
   };
 
   // close the menu 

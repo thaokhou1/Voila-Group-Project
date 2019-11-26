@@ -4,7 +4,7 @@ import axios from 'axios';
 // Function that emails criteria from buyer to admin
 function* emailCriteria(action) {
     try{
-        axios.post('/nodemailer/criteria', action.payload);
+        yield axios.post('/nodemailer/criteria', action.payload);
         console.log('emailing criteria', action.payload);
     }catch(error) {
         console.log('error sending email', error);
@@ -14,7 +14,7 @@ function* emailCriteria(action) {
 // Function that emails showings requested from buyer to admin
 function* emailShowing(action) {
     try{
-        axios.post('/nodemailer/showing', action.payload);
+        yield axios.post('/nodemailer/showing', action.payload);
         console.log('emailing showing', action.payload);
     }catch(error) {
         console.log('error sending email', error);
@@ -24,7 +24,7 @@ function* emailShowing(action) {
 // Function that emails offers made from buyer to admin
 function* emailOffer(action) {
     try{
-        axios.post('/nodemailer/offer', action.payload);
+        yield axios.post('/nodemailer/offer', action.payload);
         console.log('emailing offer', action.payload);
     }catch(error) {
         console.log('error sending email', error);

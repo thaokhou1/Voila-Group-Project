@@ -3,7 +3,7 @@ import ChangeCriteria from './ChangeCriteria';
 import RequestShowing from './RequestShowing';
 import MakeOffer from './MakeOffer';
  
-// This component will change componentToShow depending on which state is triggered in Step3Client component
+// This component will change componentToShow depending on which state is toggled in Step3Client component
 const ComponentToUpdate = (props) => {
 
     let componentToShow;
