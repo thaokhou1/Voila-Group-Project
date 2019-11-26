@@ -46,12 +46,13 @@ This application is designed so that the main administrator is the one who creat
 
 ### Setting Up Nodemailer
 * Steps for using Nodemailer to send email:
-    - Make sure you have run `npm install`, "nodemailer" should be located in dependencies in package.json
+    - Make sure you have run `npm install`, "nodemailer" should be located in dependencies in package.json file
     - Add to your `.env` file:
         - EMAIL = (your email here) 
         - PASSWORD = (your email password here)
     - Note: `.env` file does not get pushed up to Github
-    - This will authorize transporter object in `node.mailer.router.js` to send/receive email from your account
+    - This will authorize transporter object in `node.mailer.router.js` to send/receive email from your account (where you see process.env.EMAIL and process.env.PASSWORD)
+    - With the way Google's email security works, you will need to go to this address [https://myaccount.google.com/lesssecureapps] and toggle "Allow less secure apps" to ON for your account in order to use Nodemailer. More information can be found here: [https://community.nodemailer.com/using-gmail/].
 ​
 ​
 ### Completed Features
